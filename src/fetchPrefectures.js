@@ -5,14 +5,7 @@ const fetchPrefectures = async (
         headers: { 'X-API-KEY': apiKey }
     })
     const json = await resPref.json()
-
-    
-
-    
-    
-
     return json.result;
-    // series: preffInfo
 }
 
 export{fetchPrefectures}
