@@ -40,8 +40,6 @@ const App = () => {
   const [series, setSeries] = useState([]);
   const [prefInfo, setPrefInfo] = useState([]);
 
-  console.log(selectedPrefectures)
-
   useEffect(() => {
         const f = async () => {
           setPrefecturesLoading(true)
