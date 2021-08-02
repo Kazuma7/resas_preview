@@ -2,7 +2,7 @@ const fetchPrefectures = async (
     apiKey
 ) => {
 
-    //１ヶ月以上経過したらストレージのデータを削除する
+    //１ヶ月以上経過したらローカルストレージのデータを削除する
     if (localStorage.getItem("prefNameDate")) {
         const date = JSON.parse(localStorage.getItem("prefNameDate"))
         if((new Date(date)).getMonth() !== (new Date()).getMonth()){
