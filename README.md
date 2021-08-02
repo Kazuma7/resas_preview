@@ -21,5 +21,5 @@ npm test
 ## 概要
 webサイトのスクリーンショット
 <p align="center">
-<img src="./resas_preview/img/workResImg.png" alt="画像" />
+<img src="./img/workResImg.png" alt="画像" />
 </p>
