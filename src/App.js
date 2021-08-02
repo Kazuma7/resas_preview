@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { fetchPrefectures } from "./fetchPrefectures";
-import { fetchPrefInfo } from "./fetchPrefInfo";
-import { PrefectureCheckbox } from './PrefectureCheckbox';
+import { fetchPrefectures } from "./function/fetchPrefectures";
+import { fetchPrefInfo } from "./function/fetchPrefInfo";
+import { PrefectureCheckbox } from './components/PrefectureCheckbox';
 import { Line } from 'react-chartjs-2';
-import prefColor from './prefColor';
-import './App.css';
-import { Message } from './Message';
+import prefColor from './styles/prefColor';
+import './styles/App.css';
+import { Message } from './components/Message';
 import apiKey from './apiKey';
 
 const graphOption = {
@@ -62,34 +62,34 @@ const App = () => {
     setPrefecturesLoading(true)
 
     // checkboxのTrue/Falseの配列を複製
-    const selected_copy = selectedPrefectures.slice();
+    const selectedCopy = selectedPrefectures.slice();
 
     //checkboxが押されたらTrue/Falseを反転
-    selected_copy[index] = !selected_copy[index];
+    selectedCopy[index] = !selectedCopy[index];
 
     //chechboxにチェックが入ったらグラフ表示用のデータ配列にデータを挿入
     if (!selectedPrefectures[index]) {
-      const res_series = {
+      const resSeries = {
         data: prefInfo[index],
         label: prefectures[index].prefName,
         //あらかじめ決めておいた色コードを都道府県に合わせて取得(被らない)
         backgroundColor: prefColor[index],
         borderColor: prefColor[index],
       }
-      setSelectedPrefectures(selected_copy)
-      setSeries([...series, res_series])
+      setSelectedPrefectures(selectedCopy)
+      setSeries([...series, resSeries])
       setPrefecturesLoading(false)
       //checkboxが外されたらグラフ表示用のデータ配列からデータを削除
     } else {
-      const series_copy = series.slice();
-      for (let i = 0; i < series_copy.length; i++) {
-        if (series_copy[i].label === prefectures[index].prefName) {
-          series_copy.splice(i, 1);
+      const seriesCopy = series.slice();
+      for (let i = 0; i < seriesCopy.length; i++) {
+        if (seriesCopy[i].label === prefectures[index].prefName) {
+          seriesCopy.splice(i, 1);
         }
       }
 
-      setSelectedPrefectures(selected_copy)
-      setSeries(series_copy)
+      setSelectedPrefectures(selectedCopy)
+      setSeries(seriesCopy)
       setPrefecturesLoading(false)
     }
   }
