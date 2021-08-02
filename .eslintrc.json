@@ -26,12 +26,7 @@
     "plugins": ["react-hooks", "react", "jest"],
     // 基本的にルールは recommended に従う
     // prettier は配列の最後尾に書く
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
-        "jest/recommended",
-        "prettier"
-    ],
+    "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
     "rules": {
         "react/prop-types": "off",
         "react/react-in-jsx-scope": "off"
