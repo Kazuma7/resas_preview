@@ -1,6 +1,6 @@
 # RESAS-APIによる総人口比較webサービス
 
-webサイト:https://kazuma7.github.io/resas-app/
+webサイト:https://kazuma7.github.io/resas_preview/
 
 ## 環境
 - Node v15
