@@ -108,6 +108,7 @@ const App = () => {
           // 都道府県のチェックボックスを横に並べて表示させたい
           return (
             <PrefectureCheckbox
+              key={prefectures[i].prefCode + 'checkbox_key'}
               checked={selectedPrefectures[prefectures[i].prefCode - 1]}
               disabled={prefecturesLoading}
               prefName={prefectures[i].prefName}

@@ -12,8 +12,7 @@ const PrefectureCheckbox = ({
         paddingleft: '10%',
         display: 'inline-block',
         width: '6em',
-      }}
-      key={prefCode + 'checkbox_key'}>
+      }}>
       <input
         type="checkbox"
         id={prefCode + 'checkbox_pref'}
