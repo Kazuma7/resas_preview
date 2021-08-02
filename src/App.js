@@ -44,8 +44,10 @@ const App = () => {
         const f = async () => {
           setPrefecturesLoading(true)
 
-          const fetchedPrefName = await fetchPrefectures(apiKey)
-          const fetchedPrefInfo = await fetchPrefInfo(apiKey)
+          const [fetchedPrefName, fetchedPrefInfo] = await Promise.all([
+            fetchPrefectures(apiKey),
+            fetchPrefInfo(apiKey),
+          ]);
 
           setPrefectures(fetchedPrefName)
           setPrefInfo(fetchedPrefInfo)
@@ -61,6 +63,7 @@ const App = () => {
 
     // checkboxのTrue/Falseの配列を複製
     const selected_copy = selectedPrefectures.slice();
+
     //checkboxが押されたらTrue/Falseを反転
     selected_copy[index] = !selected_copy[index];
 
@@ -88,15 +91,6 @@ const App = () => {
       setSelectedPrefectures(selected_copy)
       setSeries(series_copy)
       setPrefecturesLoading(false)
-    }
-    
-
-    return {
-      prefectures,
-      prefecturesLoading,
-      selectedPrefectures,
-      series,
-      changeSelection
     }
   }
 
