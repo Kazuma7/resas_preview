@@ -67,7 +67,6 @@ a {
 
 .checkboxOut {
     margin: 4px;
-    padding-left: 10%;
     display: inline-block;
     width: 6em;
 }
@@ -98,22 +97,6 @@ input {
 .subMA1 {
     padding-bottom: 8px;
     display: inline-block;
-}
-
-.graph {
-    width: 80%;
-    height: 0;
-    position: relative;
-    margin: 0% 0% 5% 3%;
-    padding-top: 30%;
-}
-
-.graphInner {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 .footer {

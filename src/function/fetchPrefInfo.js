@@ -13,9 +13,10 @@ const fetchPrefInfo = async (apiKey) => {
   }
 
   //fetchPrefInfoByPrefCode関数を用いてデータを取得する
-  const apis = Array(47).map((prefCode) => {
-    return fetchPrefInfoByPrefCode(apiKey, prefCode + 1);
-  });
+  const apis = [];
+  for (let prefCode = 0; prefCode < 47; prefCode++) {
+    apis.push(fetchPrefInfoByPrefCode(apiKey, prefCode + 1));
+  }
   const responses = await Promise.all(apis);
 
   //各都道府県の総人口のデータをまとめて取得する

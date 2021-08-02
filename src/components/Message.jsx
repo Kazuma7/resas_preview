@@ -13,7 +13,7 @@ const Message = () => {
         </a>
         <p className="subM">ソースコードはGitHubで公開中</p>
         <a className="subMA" href="https://github.com/Kazuma7/resas-app">
-          https://github.com/Kazuma7/resas-app
+          https://github.com/Kazuma7/resas_preview
         </a>
       </div>
     </div>
