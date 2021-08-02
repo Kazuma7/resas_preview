@@ -65,6 +65,13 @@ a {
     font-size: 1rem;
 }
 
+.checkboxOut {
+    margin: 4px;
+    padding-left: 10%;
+    display: inline-block;
+    width: 6em;
+}
+
 input {
     margin: 0px 2px 1px 0px;
     vertical-align: middle;
@@ -75,7 +82,7 @@ input {
     font-size: 1rem;
 }
 
-.main_message-box {
+.mainMessageBox {
     margin: 4% 4% 1.5% 4%;
     padding: 3%;
     border-radius: 10px;
@@ -83,12 +90,12 @@ input {
     background-color: #f5f4f1;
 }
 
-.sub_message_box {
+.subMessageBox {
     margin: 14px 4% 28px 4%;
     font-size: 0.8rem;
 }
 
-.sub_m_a1 {
+.subMA1 {
     padding-bottom: 8px;
     display: inline-block;
 }
@@ -101,7 +108,7 @@ input {
     padding-top: 30%;
 }
 
-.graph-inner {
+.graphInner {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -143,7 +150,7 @@ input {
         font-size: 0.8rem;
     }
 
-    .main_message-box {
+    .mainMessageBox {
         margin: 4%;
     }
 
@@ -155,7 +162,7 @@ input {
         padding-top: 75%;
     }
 
-    .graph-inner {
+    .graphInner {
         width: 100%;
         height: 100%;
         position: absolute;

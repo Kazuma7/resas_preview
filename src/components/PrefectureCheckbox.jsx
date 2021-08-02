@@ -6,13 +6,7 @@ const PrefectureCheckbox = ({
   onChange,
 }) => {
   return (
-    <div
-      style={{
-        margin: '4px',
-        paddingleft: '10%',
-        display: 'inline-block',
-        width: '6em',
-      }}>
+    <div className="checkboxOut">
       <input
         type="checkbox"
         id={prefCode + 'checkbox_pref'}

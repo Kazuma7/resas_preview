@@ -121,7 +121,7 @@ const App = () => {
 
       <h2>総人口グラフ</h2>
       <div className="graph">
-        <div className="graph-inner">
+        <div className="graphInner">
           <Line
             data={{
               labels: [
@@ -134,6 +134,8 @@ const App = () => {
           />
         </div>
       </div>
+
+      <div className="footer">created by kazuma iizumi</div>
     </div>
   );
 };
