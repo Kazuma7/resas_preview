@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { fetchPrefectures } from "./function/fetchPrefectures";
-import { fetchPrefInfo } from "./function/fetchPrefInfo";
+import { useEffect, useState } from 'react';
+import { fetchPrefectures } from './function/fetchPrefectures';
+import { fetchPrefInfo } from './function/fetchPrefInfo';
 import { PrefectureCheckbox } from './components/PrefectureCheckbox';
 import { Line } from 'react-chartjs-2';
 import prefColor from './styles/prefColor';
@@ -14,14 +14,14 @@ const graphOption = {
       display: true,
       title: {
         display: true,
-        text: '年代 (年)'
+        text: '年代 (年)',
       },
-      },
+    },
     y: {
       display: true,
       title: {
         display: true,
-        text: '総人口 (千人)'
+        text: '総人口 (千人)',
       },
       suggestedMin: 0,
       suggestedMax: 15000000 / 1000,
@@ -33,33 +33,34 @@ const graphOption = {
 };
 
 const App = () => {
-
   const [prefectures, setPrefectures] = useState({});
   const [prefecturesLoading, setPrefecturesLoading] = useState(false);
-  const [selectedPrefectures, setSelectedPrefectures] = useState(Array(47).fill(false));
+  const [selectedPrefectures, setSelectedPrefectures] = useState(
+    Array(47).fill(false)
+  );
   const [series, setSeries] = useState([]);
   const [prefInfo, setPrefInfo] = useState([]);
 
   useEffect(() => {
-        const f = async () => {
-          setPrefecturesLoading(true)
+    const f = async () => {
+      setPrefecturesLoading(true);
 
-          const [fetchedPrefName, fetchedPrefInfo] = await Promise.all([
-            fetchPrefectures(apiKey),
-            fetchPrefInfo(apiKey),
-          ]);
+      const [fetchedPrefName, fetchedPrefInfo] = await Promise.all([
+        fetchPrefectures(apiKey),
+        fetchPrefInfo(apiKey),
+      ]);
 
-          setPrefectures(fetchedPrefName)
-          setPrefInfo(fetchedPrefInfo)
+      setPrefectures(fetchedPrefName);
+      setPrefInfo(fetchedPrefInfo);
 
-          setPrefecturesLoading(false)
-        }
-        f()
-  }, [])
+      setPrefecturesLoading(false);
+    };
+    f();
+  }, []);
 
   const changeSelection = (index) => {
     //チェックボックスを連打されたときのバグを防ぐため
-    setPrefecturesLoading(true)
+    setPrefecturesLoading(true);
 
     // checkboxのTrue/Falseの配列を複製
     const selectedCopy = selectedPrefectures.slice();
@@ -75,10 +76,10 @@ const App = () => {
         //あらかじめ決めておいた色コードを都道府県に合わせて取得(被らない)
         backgroundColor: prefColor[index],
         borderColor: prefColor[index],
-      }
-      setSelectedPrefectures(selectedCopy)
-      setSeries([...series, resSeries])
-      setPrefecturesLoading(false)
+      };
+      setSelectedPrefectures(selectedCopy);
+      setSeries([...series, resSeries]);
+      setPrefecturesLoading(false);
       //checkboxが外されたらグラフ表示用のデータ配列からデータを削除
     } else {
       const seriesCopy = series.slice();
@@ -88,12 +89,11 @@ const App = () => {
         }
       }
 
-      setSelectedPrefectures(selectedCopy)
-      setSeries(seriesCopy)
-      setPrefecturesLoading(false)
+      setSelectedPrefectures(selectedCopy);
+      setSeries(seriesCopy);
+      setPrefecturesLoading(false);
     }
-  }
-
+  };
 
   return (
     <div>
@@ -104,7 +104,7 @@ const App = () => {
       <h2>都道府県</h2>
 
       <div className="checkboxes">
-        {Object.keys(prefectures).map(i => {
+        {Object.keys(prefectures).map((i) => {
           // 都道府県のチェックボックスを横に並べて表示させたい
           return (
             <PrefectureCheckbox
@@ -114,7 +114,7 @@ const App = () => {
               prefCode={prefectures[i].prefCode}
               onChange={() => changeSelection(prefectures[i].prefCode - 1)}
             />
-          )
+          );
         })}
       </div>
 
@@ -123,7 +123,10 @@ const App = () => {
         <div className="graph-inner">
           <Line
             data={{
-              labels: [1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005, 2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045],
+              labels: [
+                1960, 1965, 1970, 1975, 1980, 1985, 1990, 1995, 2000, 2005,
+                2010, 2015, 2020, 2025, 2030, 2035, 2040, 2045,
+              ],
               datasets: series,
             }}
             options={graphOption}
@@ -131,7 +134,7 @@ const App = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default App;
