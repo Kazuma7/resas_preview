@@ -23,19 +23,17 @@
             "version": "detect"
         }
     },
-    "plugins": [
-        "react-hooks",
-        "react"
-    ],
+    "plugins": ["react-hooks", "react", "jest"],
     // 基本的にルールは recommended に従う
     // prettier は配列の最後尾に書く
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+        "jest/recommended",
         "prettier"
     ],
     "rules": {
-        // TypeScirpt なので prop-types は要らない
-        "react/prop-types": "off"
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off"
     }
 }
