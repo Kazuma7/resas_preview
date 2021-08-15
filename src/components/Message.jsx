@@ -3,7 +3,10 @@ const Message = () => {
     <div>
       <div className="mainMessageBox">
         <p>
-          💡ここはRESAS-APIを用いて都道府県ごとの総人口を調べ、比較することができるwebサービスです。下に並べられた県名にチェックを入れることでそれぞれの総人口グラフを表示します。
+          💡ここはRESAS-APIを用いて都道府県ごとの総人口を調べ、比較することができるwebサービスです。
+        </p>
+        <p>
+          下に並べられた県名にチェックを入れることでそれぞれの総人口グラフを表示します。
         </p>
       </div>
       <div className="subMessageBox">
