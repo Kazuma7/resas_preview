@@ -82,12 +82,15 @@ const App = () => {
       setPrefecturesLoading(false);
       //checkboxが外されたらグラフ表示用のデータ配列からデータを削除
     } else {
+      console.log(series.slice());
       const seriesCopy = series.slice();
+      console.log(seriesCopy);
       for (let i = 0; i < seriesCopy.length; i++) {
         if (seriesCopy[i].label === prefectures[index].prefName) {
           seriesCopy.splice(i, 1);
         }
       }
+      console.log(seriesCopy);
 
       setSelectedPrefectures(selectedCopy);
       setSeries(seriesCopy);
