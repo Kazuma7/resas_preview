@@ -33,6 +33,11 @@ const graphOption = {
 };
 
 const App = () => {
+  //prefectures:県名一覧
+  //prefecturesLoading:別のことをやっている間触れないようにする
+  //selectedPrefectures:チェック判定
+  //series:グラフに表示するためのデータ箱
+  //prefInfo:県の情報一覧
   const [prefectures, setPrefectures] = useState({});
   const [prefecturesLoading, setPrefecturesLoading] = useState(false);
   const [selectedPrefectures, setSelectedPrefectures] = useState(
@@ -42,9 +47,11 @@ const App = () => {
   const [prefInfo, setPrefInfo] = useState([]);
 
   useEffect(() => {
+    //非同期処理関数定義
     const f = async () => {
       setPrefecturesLoading(true);
 
+      //順序決め(非同期処理)
       const [fetchedPrefName, fetchedPrefInfo] = await Promise.all([
         fetchPrefectures(apiKey),
         fetchPrefInfo(apiKey),
@@ -78,19 +85,17 @@ const App = () => {
         borderColor: prefColor[index],
       };
       setSelectedPrefectures(selectedCopy);
+      //最後に追加したものをSeriesステートとしてセット
       setSeries([...series, resSeries]);
       setPrefecturesLoading(false);
       //checkboxが外されたらグラフ表示用のデータ配列からデータを削除
     } else {
-      console.log(series.slice());
       const seriesCopy = series.slice();
-      console.log(seriesCopy);
       for (let i = 0; i < seriesCopy.length; i++) {
         if (seriesCopy[i].label === prefectures[index].prefName) {
           seriesCopy.splice(i, 1);
         }
       }
-      console.log(seriesCopy);
 
       setSelectedPrefectures(selectedCopy);
       setSeries(seriesCopy);
